@@ -106,12 +106,12 @@ const ProjectDetail = () => {
           <h2 className="text-2xl font-bold mb-6">Project Images</h2>
           <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-2xl h-96 overflow-hidden">
             {/* Image placeholder - replace with actual images */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4 opacity-20">🖼️</div>
-                <p className="text-gray-500 dark:text-gray-400">Project Image {currentImageIndex + 1}</p>
-              </div>
-            </div>
+            <img
+              src={project.images[currentImageIndex]}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+
             
             {/* Image Navigation */}
             {project.images.length > 1 && (

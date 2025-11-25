@@ -1,3 +1,7 @@
+import bizpulse1 from "./png/biz-pulse.png";
+import gradify from './png/gradify.png';
+import mta from './png/mta.png';
+
 export const projects = [
   // 1. BizPulse – AI-powered Business Intelligence (SCAFLD)
   {
@@ -9,7 +13,7 @@ export const projects = [
     service: "AI & Business Intelligence",
     client: "AWS Hackathon Project",
     teamSize: "3 Developers",
-    images: ["/bizpulse-1.jpg", "/bizpulse-2.jpg"],
+    images: [bizpulse1, "/bizpulse-2.jpg"],
     about: "BizPulse helps small and medium businesses understand their data through AI-powered narrative insights, anomaly detection, and recommendations.",
     features: [
       "Serverless AWS architecture with Lambda, Glue, Q, Lookout",
@@ -180,7 +184,7 @@ export const projects = [
     service: "Education Tech",
     client: "Schools & Universities",
     teamSize: "2 Developer",
-    images: ["/gradify-1.jpg", "/gradify-2.jpg"],
+    images: [gradify, "/gradify-2.jpg"],
     about: "Gradify provides role-based dashboards, file/code uploads, AI-assisted grading, and a mobile-friendly interface for students and lecturers.",
     features: [
       "Role-based dashboards",
@@ -538,7 +542,7 @@ export const projects = [
   service: "API / Analytics",
   client: "Personal Project",
   teamSize: "2 Developers",
-  images: ["/multitrend-1.jpg"],
+  images: [mta],
   about: "Pulls trending topics from Twitter (X), TikTok, and other platforms to provide a consolidated view of social trends.",
   features: [
     "Multi-platform trend aggregation",
