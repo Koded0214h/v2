@@ -2,9 +2,9 @@
 export const experiences = [
     {
       id: "architect",
-      company: "The Architect",
+      company: "Striche.AI",
       role: "Backend Developer",
-      period: "2024 – Present",
+      period: "Nov 2025 – Present",
       location: "Remote",
       description:
         "Contributed backend engineering to The Architect, a community-driven product initiative.",
@@ -18,7 +18,7 @@ export const experiences = [
       id: "searchlabs",
       company: "SearchLabs",
       role: "Full Stack Developer",
-      period: "2025 – Present",
+      period: "Sep 2025 – Present",
       location: "Remote",
       description:
         "Fullstack developer building AI-powered products and internal tools, working across Django, DRF, React, and modern AI pipelines.",
@@ -42,7 +42,7 @@ export const experiences = [
       id: "awake7",
       company: "AWAKE 7.0 Tech Fellowship",
       role: "Backend Tutor / Mentor",
-      period: "Oct 2025",
+      period: "Sep 2025 - Oct 2025",
       location: "Remote",
       description:
         "Selected as a backend tutor mentoring a cohort of emerging engineers through hands-on backend projects.",
@@ -73,7 +73,7 @@ export const experiences = [
   
     {
       id: "techstars-hack",
-      company: "Techstars FoE Hackathon (UNILAG)",
+      company: "Techstars Hackathon (UNILAG)",
       role: "Hackathon Organizer",
       period: "Sept 2025",
       location: "UNILAG, Lagos",
@@ -91,7 +91,7 @@ export const experiences = [
       id: "ecx6-tutor",
       company: "ECX 6.0",
       role: "Backend Tutor",
-      period: "2025",
+      period: "Dec 2025 - Present",
       location: "UNILAG, Lagos",
       description:
         "Backend development instructor teaching API development, databases, and real-world backend patterns.",
@@ -106,7 +106,7 @@ export const experiences = [
         id: "pressclub",
       company: "UNILAG Press Club Tech Team",
       role: "Backend Developer",
-      period: "2024 – Present",
+      period: "July 2025 – Present",
       location: "UNILAG, Lagos",
       description:
       "Backend developer responsible for internal tools supporting media workflows and club operations.",
@@ -231,7 +231,7 @@ export const experiences = [
       location: "Lagos, Nigeria",
       description: "Expected Graduation by September 2028.",
       achievements: [
-        "Current GPA: 4.59/5.0",
+        "Current GPA: 4.59/5.00",
         "Coursework: Software Engineering, Data Structures, Algorithms, Database Systems",
         "Member of Google Developer Student Club (Backend & AI tracks)",
         "Team Lead at TechStars UNILAG (Backend Track)",
