@@ -1,13 +1,13 @@
 // data/experiences.js
 export const experiences = [
     {
-      id: "architect",
+      id: "striche.ai",
       company: "Striche.AI",
       role: "Backend Developer",
       period: "Nov 2025 – Present",
       location: "Remote",
       description:
-        "Contributed backend engineering to The Architect, a community-driven product initiative.",
+        "Contributed backend engineering to Striche.AI, a community-driven product initiative.",
       achievements: [
         "Designed APIs supporting authentication and content management",
         "Optimized backend performance and simplified dev workflow"
@@ -89,7 +89,7 @@ export const experiences = [
   
     {
       id: "ecx6-tutor",
-      company: "ECX 6.0",
+      company: "ECX 6.0 Fellowship",
       role: "Backend Tutor",
       period: "Dec 2025 - Present",
       location: "UNILAG, Lagos",
