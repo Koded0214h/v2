@@ -1,6 +1,7 @@
 import bizpulse1 from "./png/biz-pulse.png";
 import gradify from './png/gradify.png';
 import mta from './png/mta.png';
+import trustgrid from './png/trustgrid.png'
 
 export const projects = [
   // 1. BizPulse – AI-powered Business Intelligence (SCAFLD)
@@ -445,7 +446,7 @@ export const projects = [
   service: "Privacy & Compliance",
   client: "Enterprises",
   teamSize: "3 Developers",
-  images: ["/trustgrid.png", "/trustgrid-2.jpg"],
+  images: [trustgrid, "/trustgrid-2.jpg"],
   about: "TrustGrid enables organizations to request citizen data with automated consent management, audit trails, and transparency, fully NDPR-compliant.",
   features: [
     "Automated consent management",
