@@ -445,7 +445,7 @@ export const projects = [
   service: "Privacy & Compliance",
   client: "Enterprises",
   teamSize: "3 Developers",
-  images: ["/trustgrid-1.jpg", "/trustgrid-2.jpg"],
+  images: ["/trustgrid.png", "/trustgrid-2.jpg"],
   about: "TrustGrid enables organizations to request citizen data with automated consent management, audit trails, and transparency, fully NDPR-compliant.",
   features: [
     "Automated consent management",
