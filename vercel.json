@@ -9,6 +9,10 @@
         }
       },
       {
+        "src": "/(.*\\.(png|jpg|jpeg|svg|ico|pdf|webp|gif|txt|xml))",
+        "dest": "/$1"
+      },
+      {
         "src": "/(.*)",
         "dest": "/index.html"
       }

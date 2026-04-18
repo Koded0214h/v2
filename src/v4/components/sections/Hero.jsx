@@ -98,7 +98,7 @@ export default function Hero() {
           </div>
 
           {/* Terminal body */}
-          <div className="p-6 min-h-[220px] font-mono text-sm leading-7">
+          <div className="p-4 sm:p-6 min-h-[220px] font-mono text-[11px] sm:text-sm leading-6 sm:leading-7">
             {displayed.map((line, i) => {
               const isFirst = i === 0;
               const isLast = i === displayed.length - 1;
