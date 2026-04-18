@@ -285,7 +285,7 @@ export default function Journey() {
           Origin Story
         </h2>
         <p className="text-sm mb-12" style={{ color: '#64748b' }}>
-          From a Minecraft terminal at age 9 to production systems at scale. Hover a planet.
+          From a Game Shakers at age 9 to production systems at scale. Hover a planet.
         </p>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
