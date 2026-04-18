@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Hero background diagonal lines */
+@keyframes dataFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+
+.v4-hero-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0,
+    transparent 18px,
+    rgba(0, 217, 255, 0.025) 18px,
+    rgba(0, 217, 255, 0.025) 19px
+  );
+  animation: dataFlow 12s linear infinite;
+}
+
+/* Dot grid */
+.v4-dot-grid {
+  background-image: radial-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glow effects */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.25), 0 0 40px rgba(0, 217, 255, 0.08);
+}
+
+.accent-glow-sm {
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+}
+
+.success-glow {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.35);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+/* Scrollbar */
+.v4-scroll::-webkit-scrollbar { width: 4px; }
+.v4-scroll::-webkit-scrollbar-track { background: #000000; }
+.v4-scroll::-webkit-scrollbar-thumb { background: #1e2d3d; border-radius: 2px; }
+.v4-scroll::-webkit-scrollbar-thumb:hover { background: #00d9ff; }
+
+/* Timeline spine pulse */
+@keyframes spinePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.spine-pulse {
+  animation: spinePulse 3s ease-in-out infinite;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 217, 255, 0.12);
+}
+
+/* Tech chip hover */
+.tech-chip {
+  transition: all 0.15s ease;
+  cursor: default;
+}
+.tech-chip:hover {
+  border-color: #00d9ff !important;
+  color: #00d9ff !important;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.25);
+}
+
+/* Footprint card */
+.footprint-card {
+  transition: all 0.2s ease;
+}
+.footprint-card:hover {
+  border-color: #1e2d3d !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0f1623"/>
+  <!-- Terminal border glow -->
+  <rect x="1" y="1" width="30" height="30" rx="6.5" stroke="#00d9ff" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Prompt > -->
+  <text x="4" y="23" font-family="monospace" font-size="18" font-weight="700" fill="#00d9ff">&#x3E;_</text>
+</svg>
