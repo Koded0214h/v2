@@ -65,6 +65,10 @@ function OrbitRing({ radius, color }) {
 
 /* ─── Planet node ──────────────────────────────────────────────── */
 function Planet({ milestone, x, y, isActive, onEnter, onLeave, onClick }) {
+  if (!milestone || !milestone.id) {
+    console.error("Planet component received undefined or invalid milestone:", milestone);
+    return null; // Don't render if milestone is invalid
+  }
   const cfg  = PLANET[milestone.id];
   const Icon = cfg.icon;
 
@@ -281,11 +285,29 @@ export default function Journey() {
 
   const activeMilestone = journeyMilestones.find((m) => m.id === active);
 
-  /* Build planet position arrays */
+  /* Build planet position arrays with calculated x, y positions based on orbits and angles */
   const innerMilestones = journeyMilestones.filter((m) => INNER_IDS.includes(m.id));
   const outerMilestones = journeyMilestones.filter((m) => OUTER_IDS.includes(m.id));
 
-  const allPlanets = [...innerMilestones, ...outerMilestones];
+  const innerPlanets = innerMilestones.map((milestone, idx) => {
+    const angle = angles.inner + (idx * Math.PI * 2) / innerMilestones.length;
+    return {
+      milestone,
+      x: Math.cos(angle) * orbits.inner,
+      y: Math.sin(angle) * orbits.inner,
+    };
+  });
+
+  const outerPlanets = outerMilestones.map((milestone, idx) => {
+    const angle = angles.outer + (idx * Math.PI * 2) / outerMilestones.length;
+    return {
+      milestone,
+      x: Math.cos(angle) * orbits.outer,
+      y: Math.sin(angle) * orbits.outer,
+    };
+  });
+
+  const allPlanets = [...innerPlanets, ...outerPlanets];
 
   return (
     <SectionWrapper id="journey" className="py-24 px-6">
