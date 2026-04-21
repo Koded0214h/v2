@@ -59,7 +59,7 @@ export const journeyMilestones = [
     id: 'koded',
     year: 'Present',
     label: 'Raufu Abdulrahman',
-    story: 'The architect behind the systems you see, and the ones you don't. Building production-grade backend and AI infrastructure. Click a planet to explore my journey!',
+    story: 'The architect behind the systems you see, and the ones you don\'t. Building production-grade backend and AI infrastructure. Click a planet to explore my journey!',
     emoji: '👤',
   },
 ];

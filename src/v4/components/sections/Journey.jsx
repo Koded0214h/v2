@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import pfpImage from '../../assets/pfp.jpg'; // Import the profile picture
+import pfpImage from '../../../assets/pfp.jpg'; // Import the profile picture
 import {
   Terminal,
   GraduationCap,
