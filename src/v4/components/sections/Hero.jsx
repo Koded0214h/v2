@@ -98,7 +98,7 @@ export default function Hero() {
           </div>
 
           {/* Terminal body */}
-          <div className="p-4 sm:p-6 min-h-[220px] font-mono text-[11px] sm:text-sm leading-6 sm:leading-7">
+          <div className="p-4 sm:p-6 min-h-[220px] font-mono text-[10px] xs:text-[11px] sm:text-sm leading-6 sm:leading-7">
             {displayed.map((line, i) => {
               const isFirst = i === 0;
               const isLast = i === displayed.length - 1;
@@ -122,7 +122,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-4 flex items-center gap-2 font-mono text-xs px-4 py-2 rounded-full border w-fit"
+          className="mt-4 flex items-center gap-2 font-mono text-[10px] sm:text-xs px-4 py-2 rounded-full border w-fit"
           style={{
             borderColor: '#1e2d3d',
             color: '#00d9ff',
@@ -142,25 +142,25 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.85 }}
-          className="mt-6 flex items-center gap-3"
+          className="mt-6 flex items-center gap-2 sm:gap-3"
         >
           <button
             onClick={scrollToNext}
-            className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-all duration-150 hover:border-v4-accent hover:text-v4-accent"
+            className="flex-1 flex items-center justify-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg border text-[11px] xs:text-xs sm:text-sm font-medium transition-all duration-150 hover:border-v4-accent hover:text-v4-accent"
             style={{ borderColor: '#1e2d3d', color: '#e2e8f0' }}
           >
-            Explore My Systems
-            <ArrowDown size={14} />
+            Explore Systems
+            <ArrowDown size={14} className="hidden xs:block" />
           </button>
           <a
             href="/resume-raufu-abdulrahman.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 hover:opacity-85"
+            className="flex-1 flex items-center justify-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg text-[11px] xs:text-xs sm:text-sm font-medium transition-all duration-150 hover:opacity-85"
             style={{ backgroundColor: '#00d9ff', color: '#000000' }}
           >
-            <Download size={14} />
-            Download Resume
+            <Download size={14} className="hidden xs:block" />
+            Resume
           </a>
         </motion.div>
       </div>
