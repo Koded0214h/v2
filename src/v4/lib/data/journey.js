@@ -55,4 +55,11 @@ export const journeyMilestones = [
       'Fog of War. Janus. Systems that span chains and minds. Building what doesn\'t exist yet, because the infrastructure for the next era needs to be laid by someone.',
     emoji: '🚀',
   },
+  {
+    id: 'koded',
+    year: 'Present',
+    label: 'Raufu Abdulrahman',
+    story: 'The architect behind the systems you see, and the ones you don't. Building production-grade backend and AI infrastructure. Click a planet to explore my journey!',
+    emoji: '👤',
+  },
 ];

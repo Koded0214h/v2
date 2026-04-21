@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import pfpImage from '../../assets/pfp.jpg'; // Import the profile picture
 import {
   Terminal,
   GraduationCap,
@@ -21,6 +22,7 @@ const PLANET = {
   'ai-systems':      { icon: Bot,           light: '#c084fc', dark: '#1a0a2a', mid: '#4c1d95' },
   'full-time':       { icon: Building2,     light: '#00d9ff', dark: '#001a2a', mid: '#0e3a50' },
   'builder-mode':    { icon: Rocket,        light: '#f87171', dark: '#2a0000', mid: '#7f1d1d' },
+  'koded':           { icon: Terminal,      light: '#00d9ff', dark: '#001a2a', mid: '#0e3a50' }, // Added koded config
 };
 
 /* Inner orbit holds the earlier era, outer holds the recent era */
@@ -124,6 +126,15 @@ function MilestoneImage({ milestone }) {
   const [errored, setErrored] = useState(false);
   const cfg = PLANET[milestone.id];
 
+  // Determine the image source based on milestone.id
+  const imgSrc = milestone.id === 'koded' ? pfpImage : `/journey/${milestone.id}.jpg`;
+
+  // Reset states when milestone changes
+  useEffect(() => {
+    setLoaded(false);
+    setErrored(false);
+  }, [milestone.id]);
+
   return (
     <div
       className="w-full h-44 rounded-xl overflow-hidden relative flex items-center justify-center"
@@ -135,12 +146,16 @@ function MilestoneImage({ milestone }) {
       {/* Real image — drop at /public/journey/{milestone.id}.jpg */}
       {!errored && (
         <img
-          src={`/journey/${milestone.id}.jpg`}
+          src={imgSrc}
+          key={milestone.id}
           alt={milestone.label}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
           style={{ opacity: loaded ? 1 : 0 }}
           onLoad={() => setLoaded(true)}
-          onError={() => setErrored(true)}
+          onError={() => {
+            console.error(`Failed to load image: ${imgSrc}`);
+            setErrored(true);
+          }}
         />
       )}
 
@@ -204,17 +219,22 @@ function DetailPanel({ milestone, onClose }) {
 }
 
 /* ─── Center "sun" ─────────────────────────────────────────────── */
-function CenterSun() {
+function CenterSun({ onActivateKoded, isActive }) {
   return (
-    <div
+    <motion.button
+      onClick={onActivateKoded}
+      animate={{ scale: isActive ? 1.15 : 1 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
       className="relative z-10 flex flex-col items-center justify-center rounded-full"
       style={{
         width: 84,
         height: 84,
-        background: 'radial-gradient(circle at 38% 32%, rgba(0,217,255,0.28) 0%, #001a2a 55%, #000 100%)',
-        border: '1.5px solid rgba(0,217,255,0.35)',
-        boxShadow: '0 0 36px rgba(0,217,255,0.22), 0 0 72px rgba(0,217,255,0.07)',
+        background: isActive ? 'radial-gradient(circle at 38% 32%, rgba(0,217,255,0.48) 0%, #001a2a 55%, #000 100%)' : 'radial-gradient(circle at 38% 32%, rgba(0,217,255,0.28) 0%, #001a2a 55%, #000 100%)',
+        border: isActive ? '1.5px solid rgba(0,217,255,0.55)' : '1.5px solid rgba(0,217,255,0.35)',
+        boxShadow: isActive ? '0 0 36px rgba(0,217,255,0.32), 0 0 72px rgba(0,217,255,0.12)' : '0 0 36px rgba(0,217,255,0.22), 0 0 72px rgba(0,217,255,0.07)',
         flexShrink: 0,
+        cursor: 'pointer',
+        outline: 'none',
       }}
     >
       <span className="font-mono text-sm font-bold leading-none" style={{ color: '#00d9ff' }}>
@@ -223,7 +243,7 @@ function CenterSun() {
       <span className="font-mono font-bold" style={{ color: '#00d9ff', fontSize: '18px', lineHeight: 0.8 }}>
         .
       </span>
-    </div>
+    </motion.button>
   );
 }
 
@@ -231,7 +251,7 @@ function CenterSun() {
 export default function Journey() {
   const orbits = useOrbits();
   const [angles, setAngles]   = useState({ inner: 0, outer: 0 });
-  const [active, setActive]   = useState(null);
+  const [active, setActive]   = useState('koded'); // Default to koded milestone
   const anglesRef   = useRef({ inner: 0, outer: 0 });
   const isPausedRef = useRef(false);
   const rafRef      = useRef(null);
@@ -265,17 +285,7 @@ export default function Journey() {
   const innerMilestones = journeyMilestones.filter((m) => INNER_IDS.includes(m.id));
   const outerMilestones = journeyMilestones.filter((m) => OUTER_IDS.includes(m.id));
 
-  const innerPlanets = innerMilestones.map((m, i) => {
-    const a = (i / innerMilestones.length) * 2 * Math.PI + angles.inner;
-    return { milestone: m, x: orbits.inner * Math.cos(a), y: orbits.inner * Math.sin(a) };
-  });
-
-  const outerPlanets = outerMilestones.map((m, i) => {
-    const a = (i / outerMilestones.length) * 2 * Math.PI + angles.outer;
-    return { milestone: m, x: orbits.outer * Math.cos(a), y: orbits.outer * Math.sin(a) };
-  });
-
-  const allPlanets = [...innerPlanets, ...outerPlanets];
+  const allPlanets = [...innerMilestones, ...outerMilestones];
 
   return (
     <SectionWrapper id="journey" className="py-24 px-6">
@@ -306,7 +316,10 @@ export default function Journey() {
             <OrbitRing radius={orbits.outer} color="rgba(0,217,255,0.18)"  />
 
             {/* Sun */}
-            <CenterSun />
+            <CenterSun onActivateKoded={() => {
+              isPausedRef.current = true;
+              setActive('koded');
+            }} isActive={active === 'koded'} />
 
             {/* Planets */}
             {allPlanets.map(({ milestone, x, y }) => (
@@ -380,7 +393,7 @@ export default function Journey() {
                     ))}
                   </div>
                   <p className="font-mono text-xs text-center" style={{ color: '#64748b' }}>
-                    hover a planet to explore the story
+                    click the center or hover a planet to explore the story
                   </p>
                 </motion.div>
               )}
