@@ -24,24 +24,26 @@ export default function Navbar() {
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? 'rgba(0,0,0,0.88)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid #1e2d3d' : '1px solid transparent',
+        backgroundColor: (scrolled || mobileOpen) ? 'rgba(0,0,0,0.95)' : 'transparent',
+        backdropFilter: (scrolled || mobileOpen) ? 'blur(16px)' : 'none',
+        borderBottom: (scrolled || mobileOpen) ? '1px solid #1e2d3d' : '1px solid transparent',
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={(e) => { e.preventDefault(); setMobileOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="font-mono text-base font-bold tracking-tight"
           style={{ color: '#e2e8f0' }}
         >
@@ -76,12 +78,12 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden transition-colors"
+          className="md:hidden p-2 -mr-2 transition-colors relative z-50"
           style={{ color: '#e2e8f0' }}
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -89,10 +91,11 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden border-t"
             style={{ backgroundColor: '#0f1623', borderColor: '#1e2d3d' }}
           >
